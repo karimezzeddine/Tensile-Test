@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+        <title>Tensile Test</title>
+        <link rel="stylesheet" href="https://rawgit.com/Imperial-visualizations/Physics-Visualizations/master/css/skeleton.css">
+        <link rel="stylesheet" href="https://rawgit.com/Imperial-visualizations/Physics-Visualizations/master/css/style.css">
+
+        <style type="text/css">
+            #canvasWrapper{
+                width: 100%;
+                margin: 0 auto;
+            }
+            input[type=range]{
+            }
+            .Title{
+                padding-left: 8px;
+                font-weight:400;
+                border-left: 8px solid #006EAF; /* Same colour as bottom bar */
+            }
+
+            /*This code allows part of the page to be scrollable*/
+            #scrollable{
+                width: 100%;
+                height: 50vh;
+                margin: 0 auto;
+                overflow-y:auto;
+                overflow-x:auto;
+            }
+        </style>
+        <!--J QUERY SHOW AND HIDE FUNCTION-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> <!-- need this to be on top for the toggle button function to work-->  
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    // $(div id = "toggle").toggle(); wrong use # for id
+                    $("#toggle").toggle();
+                });
+            });
+        </script>
+
+        <!--MATHJAX-->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+            tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+            }
+            });</script>
+
+
+    </head>
+    <body>
+
+        <div class="container">
+            <!--<h1>Second Order Position Control System </h1>-->
+            <br>
+            <div class="row">
+
+                <!--------------LOAD IMAGE AND P5.JS FILE HERE------------->
+                <div class="three columns"></div>
+                    <div id="canvasWrapper"></div>
+                </div> <!--end for image column-->
+
+                <div class="six columns">
+                    <div id="chartarea"></div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>Sound</td>
+                                <td><p id="SoundUpdate">-</p></td>
+                            </tr>
+                            <tr>
+                                <td>Fracture Surface</td>
+                                <td><p id="FractureUpdate">-</p></td>
+                            </tr>
+                            <tr>
+                                <td> Necking</td>
+                                <td><p id="NeckingUpdate">-</p></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <a href="Youtube.com">Detailed Video</a>
+                </div>
+                <!-- -------------SLIDERS FOR ALL INPUT PARAMETERS------------ -->
+                <div class="three columns">
+                    <label>Tensile tests were performed on five different samples.</label>
+                    <!--   <input type="radio" id="plotOpen"  name="group1">Plot Open loop &nbsp-->
+                    <input type="radio" id="Blue" name="group1">Blue Sample: Annealing &nbsp
+                    <br>
+                    <input type="radio" id="Pink"name="group1">Pink Sample: Cold Rolling &nbsp
+                    <br>
+                    <input type="radio" id="Green" name="group1">Green Sample: Precipitation Hardening (100 Degrees Celsius) &nbsp
+                    <br>
+                    <input type="radio" id="Red"name="group1" >Red Sample: Solid Solution Hardening &nbsp
+                    <br>
+                    <input type="radio" id="Black"name="group1">Black Sample: Precipitation Hardening (400 Degrees Celsius) &nbsp
+                    <br>
+                
+
+                    <div id="scrollable"> <!--allow this part to scroll-->
+
+
+                    <br>
+                    <span>
+                        <input type="button" onclick= "doRun();"  value="Run" id="runbutton">                      
+                        <input type="button" onclick= "doStop();"  value="Stop" id="stopbutton"> 
+                    </span>
+                    <br>
+
+
+                   <button>Hide/Show</button>
+                    <div id="toggle">
+                        <p>Second Order Equations</p>
+                        <p>Equation of the process: $$H(s) = {K_H \over s} $$
+                            <!--+ {1 \over \omega _n ^2}s*2 + {2 \zeta \over \omega_n}s +1}$$</p>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+        <script src="https://rawgit.com/Imperial-visualizations/Physics-Visualizations/master/css/navigator.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>                
+        <script src="secondOrderPositionControl.js"></script>
+    </body>
+</html>
